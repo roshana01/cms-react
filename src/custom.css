@@ -18,6 +18,5 @@ html {
 }
 body{
     background-color: var(--color-white-50) !important;
-    display: flex;
     direction: rtl;
 }

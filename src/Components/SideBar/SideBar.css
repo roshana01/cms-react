@@ -3,7 +3,9 @@
 }
 
 .sideBar {
-  position: fixed;
+  position: sticky;
+  top: 0;
+  right: 0;
   background-color: var(--color-purple);
   flex: 1;
   height: 100vh;
