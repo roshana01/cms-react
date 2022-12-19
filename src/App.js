@@ -1,11 +1,11 @@
 import React from 'react'
-import './reset.css'
+
 import './App.css'
 
 export default function App() {
   return (
     <div>
-      <h1>rshnk</h1>
+      <h1>روشنک</h1>
     </div>
   )
 }

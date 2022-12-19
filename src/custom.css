@@ -1,0 +1,12 @@
+@import "./reset.css";
+
+@font-face {
+  font-family: Vazir;
+  src: url(./font/Vazir.ttf);
+}
+
+*,
+body,
+html {
+  font-family: Vazir;
+}
