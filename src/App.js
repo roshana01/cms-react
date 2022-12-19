@@ -1,11 +1,10 @@
 import React from 'react'
-
 import './App.css'
-
+import SideBar from "./Components/SideBar/SideBar";
 export default function App() {
   return (
-    <div>
-      <h1>روشنک</h1>
-    </div>
+    <>
+      <SideBar />
+    </>
   )
 }
