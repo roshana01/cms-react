@@ -1,38 +1,91 @@
-.sideBar{
-    position: fixed;
-    background-color:var(--color-purple);
-    flex: 1;
-    height: 100vh;
+:root {
+  --item-height: 41.59px;
+}
 
+.sideBar {
+  position: fixed;
+  background-color: var(--color-purple);
+  flex: 1;
+  height: 100vh;
 }
-.sideBar-title{
-    font-size: 1.2rem;
-    color: var(--color-white);
-    padding: 15px;
-    text-align: right;
-    font-weight: 600;
+.sideBar-title {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  padding: 15px;
+  text-align: right;
+  font-weight: 600;
+}
+.sideBar-links {
+  margin-top: 0.5rem;
+  position: relative;
+}
+.sideBar-links li {
+  position: relative;
+  padding: 0.8rem;
+}
+.sideBar-links li a {
+  width: 100%;
+  text-decoration: none;
+  color: var(--color-white);
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+.sideBar-links li.active {
+  background-color: #bbaed9c8;
+  border-radius: 2px;
+}
 
+/* * Line Animation */
+
+.sideBar-links .underline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 41.59px;
+  background: #ded5f5fb;
+  transition: all 0.3s;
 }
-.sideBar-links{
-    margin-top: .5rem;
+
+/* Active */
+.sideBar-links li:nth-child(1).active ~ .underline {
+  transform: translateY(0);
 }
-.sideBar-links li{
-   position: relative;
-   padding: .8rem;
+.sideBar-links li:nth-child(2).active ~ .underline {
+  transform: translateY(var(--item-height));
 }
-.sideBar-links li a{
-    width: 100%;
-    text-decoration: none;
-    color: var(--color-white);
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 1rem;
+.sideBar-links li:nth-child(3).active ~ .underline {
+  transform: translateY(calc(var(--item-height) * 2));
 }
-.sideBar-links li.active{
-    background-color: #bbaed9c8;
-    border-radius:2px;
+.sideBar-links li:nth-child(4).active ~ .underline {
+  transform: translateY(calc(var(--item-height) * 3));
 }
-.sideBar-links li:first-child{
-    margin-bottom: 1.7rem;
+.sideBar-links li:nth-child(5).active ~ .underline {
+  transform: translateY(calc(var(--item-height) * 4));
+}
+.sideBar-links li:nth-child(6).active ~ .underline {
+  transform: translateY(calc(var(--item-height) * 5));
+}
+
+/* Hover */
+.sideBar-links li:nth-child(1):hover ~ .underline {
+  transform: translateY(0);
+}
+.sideBar-links li:nth-child(2):hover ~ .underline {
+  transform: translateY(var(--item-height));
+}
+.sideBar-links li:nth-child(3):hover ~ .underline {
+  transform: translateY(calc(var(--item-height) * 2));
+}
+.sideBar-links li:nth-child(4):hover ~ .underline {
+  transform: translateY(calc(var(--item-height) * 3));
+}
+.sideBar-links li:nth-child(5):hover ~ .underline {
+  transform: translateY(calc(var(--item-height) * 4));
+}
+.sideBar-links li:nth-child(6):hover ~ .underline {
+  transform: translateY(calc(var(--item-height) * 5));
 }
