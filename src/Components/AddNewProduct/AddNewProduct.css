@@ -1,11 +1,12 @@
 .product-main {
-  margin-top: 5rem;
+  margin-top: 3.4rem;
 }
 .products-title {
-  font-size: 1.7rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 .add-product-form {
-  margin-top: 3rem;
+  margin-top: 1.8rem;
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
