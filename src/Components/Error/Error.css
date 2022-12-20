@@ -1,0 +1,10 @@
+.cms-empty-error{
+    box-shadow: rgba(149, 157, 165, 0.587) 0 8px 23px;
+    background-color: #f82153a1;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    margin-top: 5rem;
+    padding: 1.3rem;
+    color: var(--color-white);
+    text-align: center;
+}

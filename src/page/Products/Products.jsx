@@ -1,7 +1,10 @@
 import React from 'react'
+import Error from '../../Components/Error/Error'
 
 export default function Products() {
   return (
-    <div>Products</div>
+    <div>
+      <Error msg={'هیچ پیامی یافت نشد...'}/>
+    </div>
   )
 }

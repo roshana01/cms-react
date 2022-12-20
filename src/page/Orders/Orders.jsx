@@ -1,7 +1,9 @@
 import React from 'react'
-
+import Error from '../../Components/Error/Error'
 export default function Orders() {
   return (
-    <div>Orders</div>
+    <div>
+    <Error msg={'هیچ سفارشی یافت نشد...'}/>
+  </div>
   )
 }
