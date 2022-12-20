@@ -1,11 +1,11 @@
 import React from 'react'
 import './SideBar.css'
-import { AiOutlineHome } from 'react-icons/ai'
-import { MdProductionQuantityLimits } from 'react-icons/md'
-import { BiCommentDetail } from 'react-icons/bi'
-import { FiUsers } from 'react-icons/fi'
-import { IoBagCheckOutline } from 'react-icons/io5'
-import { AiOutlineDollar } from 'react-icons/ai'
+import { AiFillHome } from 'react-icons/ai'
+import { BsFillCartCheckFill, BsBagCheckFill } from 'react-icons/bs'
+import { MdInsertComment } from 'react-icons/md'
+import { HiUsers } from 'react-icons/hi'
+import { IoPricetags } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 
 export default function SideBar() {
   return (
@@ -14,37 +14,47 @@ export default function SideBar() {
 
       <ul className="sideBar-links">
         <li>
-          <a href="#">
-            <AiOutlineHome />
-            صفحه اصلی</a>
+          <Link to='/products'>
+            <AiFillHome />
+            صفحه اصلی
+          </Link>
         </li>
-        <li >
-          <a href="#">
-            <MdProductionQuantityLimits />
-            محصولات</a>
-        </li>
-
         <li className='active'>
-          <a href="#">
-            <IoBagCheckOutline />
-            سفارشات</a>
-        </li>
-        <li>
-          <a href="#">
-            <BiCommentDetail />
-            کامنت ها</a>
-        </li>
-        <li>
-          <a href="#">
-            <AiOutlineDollar />
-            تخفیفات</a>
+          <Link to='/products'>
+            <BsFillCartCheckFill />
+            محصولات
+          </Link>
         </li>
 
         <li>
-          <a href="#">
-            <FiUsers />
-            کابران</a>
+          <Link to='/comments'>
+            <MdInsertComment />
+            کامنت ها
+          </Link>
         </li>
+
+        <li>
+          <Link to='/users'>
+            <HiUsers />
+            کابران
+          </Link>
+        </li>
+
+        <li >
+          <Link to='/orders'>
+            <BsBagCheckFill />
+            سفارشات
+          </Link>
+        </li>
+
+        <li>
+          <Link to='/offs'>
+            <IoPricetags />
+            تخفیفات
+          </Link>
+        </li>
+
+
         <div className="underline"></div>
 
       </ul>
