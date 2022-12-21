@@ -1,0 +1,27 @@
+.products-table {
+  margin-top: 3rem;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.products-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.product-table-img {
+  width: 110px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.product-table-btn{
+    border: none;
+    border-radius: 20px;
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    font-size: 1rem;
+    padding: .5rem ;
+}
