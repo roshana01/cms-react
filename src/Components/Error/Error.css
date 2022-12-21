@@ -1,8 +1,9 @@
 .cms-empty-error{
     box-shadow: rgba(149, 157, 165, 0.587) 0 8px 23px;
-    background-color: #f82153a1;
+    /* background-color: #f82153a1; */
+    background-color: #f82121df;
     font-size: 1.2rem;
-    border-radius: 50px;
+    border-radius: 5px;
     margin-top: 5rem;
     padding: 1.3rem;
     color: var(--color-white);

@@ -13,15 +13,18 @@
 }
 
 .product-table-img {
-  width: 110px;
+  width: 85px;
   object-fit: cover;
   border-radius: 20px;
 }
+
 .product-table-btn{
     border: none;
     border-radius: 20px;
     background-color: var(--color-purple);
     color: var(--color-white);
-    font-size: 1rem;
-    padding: .5rem ;
+    font-size: .8rem;
+    padding:.7rem 1.2rem ;
+    margin-left: 1rem;
+    text-align: center;
 }
