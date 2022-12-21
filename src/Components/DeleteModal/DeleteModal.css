@@ -1,0 +1,54 @@
+.modal-parent {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+}
+
+.modal-parent.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.delete-modal {
+	background-color: var(--color-white);
+    padding: 50px;
+    text-align: center;
+	border-radius: 15px;
+	box-shadow: 1px 1px 38px 12px #54545481;
+}	
+
+.delete-modal h1 {
+    font-size: 1.3rem;
+}
+
+.delete-modal-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.delete-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: .7rem .8rem;
+	border: none;
+	border-radius: 5px;
+}
+
+.delete-modal-accept-btn {
+    background-color: var(--color-purple);
+}
+.delete-modal-reject-btn {
+    background-color: var(--color-white);
+	border: 2px solid var(--color-purple);
+}
