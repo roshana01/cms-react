@@ -8,6 +8,7 @@
 .edit-modal-form h1{
     text-align: center;
     font-size: 1.1rem;
+    margin-bottom: 1.5rem;
 }
 .edit-modal-btns {
 	display: flex;
@@ -19,9 +20,9 @@
     width: 100%;
     font-size: 1.1rem;
     font-weight: 500;
-    padding: .7rem .8rem;
+    padding: .7rem .6rem;
 	border: none;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 .edit-modal-confirm-btn {

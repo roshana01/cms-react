@@ -28,3 +28,26 @@
     margin-left: 1rem;
     text-align: center;
 }
+
+
+
+/* styles childeran editModal */
+
+.edit--product--form_grop{
+  width: 100%;
+  margin-top: 1rem;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  background-color: var(--color-white-50);
+  border-radius: 30px;
+}
+.edit--product_input{
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: unset;
+  font-size: .9rem;
+
+}

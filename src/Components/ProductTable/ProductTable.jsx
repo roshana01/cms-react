@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { Children, useState } from 'react'
+import { AiOutlineDollar } from 'react-icons/ai'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import DetailsModal from '../Detailes/DetailsModal'
 import EditModal from '../EditModal/EditModal'
@@ -87,7 +88,33 @@ export default function ProductTable() {
                 <EditModal
                     onClose={editModalClose}
                     onSubmit={updateProductInfos}
-                />
+                >
+                    {/*Children*/}
+                    <div className="edit--product--form_grop">
+                        <span>
+                            <AiOutlineDollar />
+                        </span>
+                        <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                    </div>
+                    <div className="edit--product--form_grop">
+                        <span>
+                            <AiOutlineDollar />
+                        </span>
+                        <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                    </div>
+                    <div className="edit--product--form_grop">
+                        <span>
+                            <AiOutlineDollar />
+                        </span>
+                        <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                    </div>
+                    <div className="edit--product--form_grop">
+                        <span>
+                            <AiOutlineDollar />
+                        </span>
+                        <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                    </div>
+                </EditModal>
             }
         </>
 
