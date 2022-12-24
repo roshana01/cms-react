@@ -1,7 +1,7 @@
 import React from 'react'
 import './DetailsModal.css'
 
-export default function DetailsModal() {
+export default function DetailsModal({closeBtn}) {
     return (
         <div className='modal-parent show-modal'>
             <div className='details-modal '>
@@ -21,7 +21,7 @@ export default function DetailsModal() {
                     </tr>
                 </table>
                 <div className="details-modal-btns">
-                    <button className="details-btn detail-close">بستن</button>
+                    <button className="details-btn detail-close" onClick={closeBtn}>بستن</button>
                 </div>
             </div>
         </div>

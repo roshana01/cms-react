@@ -4,27 +4,32 @@ import DetailsModal from '../Detailes/DetailsModal'
 import './ProductTable.css'
 
 export default function ProductTable() {
-    const [isShowModal, setIsShowModal] = useState(false)
+    const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
+    const [isShowDetailsModal, setIsShowDetailsModal] = useState(false)
 
 
 
 
     const cancelModalHandler = () => {
         console.log('مدال بسته شد');
-        setIsShowModal(false)
+        setIsShowDeleteModal(false)
 
     }
     const submitModalHandler = () => {
         console.log('مدال تایید شد');
-        setIsShowModal(false)
+        setIsShowDeleteModal(false)
 
     }
 
+    const closeDetailsModal = () => {
+        console.log('مدال بسته شد');
+        setIsShowDetailsModal(false)
+    }
 
 
     return (
         <>
-            <DetailsModal />
+
             <div className="products-table">
                 <table className="table">
                     <thead className="thead-dark">
@@ -44,8 +49,8 @@ export default function ProductTable() {
                             <td>55.000.000</td>
                             <td>85</td>
                             <td>
-                                <button className="product-table-btn" >جزییات</button>
-                                <button className="product-table-btn" onClick={() => setIsShowModal(true)}>حذف</button>
+                                <button className="product-table-btn" onClick={() => setIsShowDetailsModal(true)}>جزییات</button>
+                                <button className="product-table-btn" onClick={() => setIsShowDeleteModal(true)}>حذف</button>
                                 <button className="product-table-btn">ویرایش</button>
                             </td>
                         </tr>
@@ -53,13 +58,20 @@ export default function ProductTable() {
                     </tbody>
                 </table>
             </div>
-            {/* console.log( {isShowModal && <DeleteModal />});  */}
-            {isShowModal &&
+
+            {isShowDeleteModal &&
                 <DeleteModal
-                submitModal={submitModalHandler}
-                canselModal={cancelModalHandler}
-         />}
-         
+                    submitModal={submitModalHandler}
+                    canselModal={cancelModalHandler}
+                />
+            }
+            
+            { isShowDetailsModal &&
+                    <DetailsModal
+                        closeBtn={closeDetailsModal} 
+                    /> 
+            }
+
         </>
 
     )
