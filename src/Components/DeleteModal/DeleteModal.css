@@ -8,15 +8,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.3s;
+	animation: show 0.4s linear 0s 1 ;
 }
 
-.modal-parent.active {
-	opacity: 1;
-	visibility: visible;
-}
 
 .delete-modal {
 	background-color: var(--color-white);
@@ -51,4 +45,9 @@
 .delete-modal-reject-btn {
     background-color: var(--color-white);
 	border: 2px solid var(--color-purple);
+}
+
+@keyframes show {
+	0%{opacity: 0;}
+	100%{opacity: 1;}
 }
