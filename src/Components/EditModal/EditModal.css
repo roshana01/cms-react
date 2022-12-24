@@ -1,0 +1,36 @@
+.edit-modal-form{
+    width: 400px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 1.5rem;
+  
+}
+.edit-modal-form h1{
+    text-align: center;
+    font-size: 1.1rem;
+}
+.edit-modal-btns {
+	display: flex;
+	gap: 10px;
+	margin-top: 30px;
+}
+
+.edit-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: .7rem .8rem;
+	border: none;
+	border-radius: 5px;
+}
+
+.edit-modal-confirm-btn {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+}
+.edit-modal-reject-btn {
+    background-color: var(--color-white);
+    border: 3px solid var(--color-purple);
+}
+
+

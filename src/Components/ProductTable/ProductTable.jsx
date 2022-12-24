@@ -1,29 +1,40 @@
 import React, { useState } from 'react'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import DetailsModal from '../Detailes/DetailsModal'
+import EditModal from '../EditModal/EditModal'
 import './ProductTable.css'
 
 export default function ProductTable() {
     const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
     const [isShowDetailsModal, setIsShowDetailsModal] = useState(false)
+    const [isShowEditModal, setIsShowEditModal] = useState(false)
 
 
 
 
-    const cancelModalHandler = () => {
-        console.log('مدال بسته شد');
+    //* Delete Modal Actions
+    const deleteModalCalncelAction = () => {
         setIsShowDeleteModal(false)
-
     }
-    const submitModalHandler = () => {
-        console.log('مدال تایید شد');
+    const deleteModalConfirmAction = () => {
+        // delete product with API
         setIsShowDeleteModal(false)
-
     }
 
-    const closeDetailsModal = () => {
-        console.log('مدال بسته شد');
+    //* Details Modal Actions
+    const detailsModalClose = () => {
         setIsShowDetailsModal(false)
+    }
+
+    //* Edit Modal Actions
+    const updateProductInfos = (e) => {
+        // update product infos with API
+        e.preventDefault()
+        setIsShowEditModal(false)
+    }
+    const editModalClose = (e) => {
+        e.preventDefault()
+        setIsShowEditModal(false)
     }
 
 
@@ -51,7 +62,7 @@ export default function ProductTable() {
                             <td>
                                 <button className="product-table-btn" onClick={() => setIsShowDetailsModal(true)}>جزییات</button>
                                 <button className="product-table-btn" onClick={() => setIsShowDeleteModal(true)}>حذف</button>
-                                <button className="product-table-btn">ویرایش</button>
+                                <button className="product-table-btn" onClick={() => setIsShowEditModal(true)}>ویرایش</button>
                             </td>
                         </tr>
 
@@ -61,17 +72,23 @@ export default function ProductTable() {
 
             {isShowDeleteModal &&
                 <DeleteModal
-                    submitModal={submitModalHandler}
-                    canselModal={cancelModalHandler}
+                    submitModal={deleteModalConfirmAction}
+                    canselModal={deleteModalCalncelAction}
                 />
             }
-            
-            { isShowDetailsModal &&
-                    <DetailsModal
-                        closeBtn={closeDetailsModal} 
-                    /> 
-            }
 
+            {isShowDetailsModal &&
+                <DetailsModal
+                    closeBtn={detailsModalClose}
+                />
+            }
+            {
+                isShowEditModal &&
+                <EditModal
+                    onClose={editModalClose}
+                    onSubmit={updateProductInfos}
+                />
+            }
         </>
 
     )

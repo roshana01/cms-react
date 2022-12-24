@@ -27,4 +27,5 @@
 .details-btn.detail-close {
     color: #fff;
 	background-color: var(--color-purple);
+	border-radius: 30px;
 }
