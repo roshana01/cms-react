@@ -1,0 +1,36 @@
+.modal-parent {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.show-modal {
+  animation: show 0.4s linear 0s 1;
+}
+
+.delete-modal {
+  background-color: var(--color-white);
+  padding: 50px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 38px 12px #545454d8;
+}
+
+.cms-table {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+.cms-table tr {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.cms-table th,
+.cms-table td {
+  padding: 20px;
+}

@@ -5,7 +5,7 @@ import './DeleteModal.css'
 
 export default function DeleteModal({submitModal, canselModal}) {
     return ReactDOM.createPortal(
-        <div className='modal-parent active'>
+        <div className='modal-parent show-modal'>
             <div className="delete-modal">
                 <h1>آیا از حذف اطمینان دارید؟</h1>
                 <div className='delete-modal-btns'>
