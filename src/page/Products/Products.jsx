@@ -7,7 +7,7 @@ export default function Products() {
   return (
     <>
       <AddNewProduct />
-      <Error msg={'هیچ پیامی یافت نشد...'} />
+    
       <ProductTable />
     </>
   )

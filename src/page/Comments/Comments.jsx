@@ -6,7 +6,6 @@ export default function Comments() {
   return (
     <div>
       <Error msg={'هیچ کامنتی یافت نشد...'} />
-      <DeleteModal />
     </div>
   )
 }
