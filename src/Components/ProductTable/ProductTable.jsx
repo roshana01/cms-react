@@ -63,9 +63,30 @@ export default function ProductTable() {
 
     //* Edit Modal Actions
     const updateProductInfos = (e) => {
-        // update product infos with API
         e.preventDefault()
-        setIsShowEditModal(false)
+        const productNewInformation = {
+            title: proudctNewTitle,
+            price: proudctNewPrice,
+            count: proudctNewCount,
+            img: proudctNewImg,
+            popularity: proudctNewPopularity,
+            sale: proudctNewSale,
+            colors: proudctNewColors,
+        }
+        fetch(`http://localhost:8000/api/products/${productID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(productNewInformation)
+        }).then((res) => res.json())
+            .then((result) => {
+                getAllProducts()
+                setIsShowEditModal(false)
+            })
+
+
+
     }
     const editModalClose = (e) => {
         e.preventDefault()
@@ -115,6 +136,7 @@ export default function ProductTable() {
                                                         }}>حذف</button>
                                                         <button className="product-table-btn" onClick={() => {
                                                             setIsShowEditModal(true)
+                                                            setproductID(item.id)
                                                             setproductNewTitle(item.title)
                                                             setproductNewPrice(item.price)
                                                             setproductNewCount(item.count)
@@ -176,9 +198,10 @@ export default function ProductTable() {
                                     </span>
                                     <input type="text"
                                         placeholder='عنوان جدید را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewTitle}
-                                        />
+                                        onChange={(e) => setproductNewTitle(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -189,7 +212,8 @@ export default function ProductTable() {
                                         placeholder='قیمت جدید را وارد کنید'
                                         className="edit--product_input"
                                         value={proudctNewPrice}
-                                        />
+                                        onChange={(e) => setproductNewPrice(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -198,9 +222,10 @@ export default function ProductTable() {
                                     <input
                                         type="text"
                                         placeholder='موجودی جدید را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewCount}
-                                        />
+                                        onChange={(e) => setproductNewCount(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -209,9 +234,10 @@ export default function ProductTable() {
                                     <input
                                         type="text"
                                         placeholder='ادرس عکس را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewImg}
-                                        />
+                                        onChange={(e) => setproductNewImg(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -220,9 +246,10 @@ export default function ProductTable() {
                                     <input
                                         type="text"
                                         placeholder='محبوبیت جدید را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewPopularity}
-                                        />
+                                        onChange={(e) => setproductNewPopularity(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -231,9 +258,10 @@ export default function ProductTable() {
                                     <input
                                         type="text"
                                         placeholder='فروش جدید را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewSale}
-                                        />
+                                        onChange={(e) => setproductNewSale(e.target.value)}
+                                    />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
@@ -242,9 +270,10 @@ export default function ProductTable() {
                                     <input
                                         type="text"
                                         placeholder='رنگبندی جدید را وارد کنید'
-                                        className="edit--product_input" 
+                                        className="edit--product_input"
                                         value={proudctNewColors}
-                                        />
+                                        onChange={(e) => setproductNewColors(e.target.value)}
+                                    />
                                 </div>
                             </EditModal>
                         }
