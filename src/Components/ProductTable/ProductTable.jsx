@@ -4,6 +4,8 @@ import DeleteModal from '../DeleteModal/DeleteModal'
 import DetailsModal from '../Detailes/DetailsModal'
 import EditModal from '../EditModal/EditModal'
 import Error from '../Error/Error'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './ProductTable.css'
 
 export default function ProductTable() {
@@ -53,6 +55,9 @@ export default function ProductTable() {
             .then((result) => {
                 setIsShowDeleteModal(false)
                 getAllProducts()
+                successNotify('حذف محصول موفقیت آمیز بود')
+            }).catch(error => {
+                errorNotify('حذف محصول موفقیت آمیز نبود')
             })
     }
 
@@ -83,6 +88,9 @@ export default function ProductTable() {
             .then((result) => {
                 getAllProducts()
                 setIsShowEditModal(false)
+                successNotify('تغییر اطلاعات موفقیت آمیز بود')
+            }).catch(error => {
+                errorNotify('تغییر اطلاعات موفقیت آمیز نبود')
             })
 
 
@@ -93,193 +101,227 @@ export default function ProductTable() {
         setIsShowEditModal(false)
     }
 
+    //* notify toast
+    const successNotify = (toastMessage) => toast.success(toastMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });;
+    const errorNotify = (toastMessage) => toast.error(toastMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });;
 
     return (
+        <>
+            <div className="products-table">
+                {
+                    isInProgress ? (
+                        <div className='loader-container'>
+                            <span class="loader"></span>
+                        </div>
+                    ) : (
+                        <>
+                            {
+                                allProducts.length ? (
+                                    <table className="table">
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th scope='col'>عکس</th>
+                                                <th scope='col'>اسم</th>
+                                                <th scope='col'>قیمت</th>
+                                                <th scope='col'>موجودی</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                allProducts.map((item) => (
+                                                    <tr key={item.id}>
+                                                        <td scope="row">
+                                                            <img src={item.img} alt="" className='product-table-img' />
+                                                        </td>
+                                                        <td>{item.title}</td>
+                                                        <td>{item.price}</td>
+                                                        <td>{item.count}</td>
+                                                        <td>
+                                                            <button className="product-table-btn" onClick={() => {
+                                                                setIsShowDetailsModal(true)
+                                                                setMainProductInfo(item)
+                                                            }}>جزییات</button>
+                                                            <button className="product-table-btn" onClick={() => {
+                                                                setIsShowDeleteModal(true)
+                                                                setproductID(item.id)
+                                                            }}>حذف</button>
+                                                            <button className="product-table-btn" onClick={() => {
+                                                                setIsShowEditModal(true)
+                                                                setproductID(item.id)
+                                                                setproductNewTitle(item.title)
+                                                                setproductNewPrice(item.price)
+                                                                setproductNewCount(item.count)
+                                                                setproductNewImg(item.img)
+                                                                setproductNewPopularity(item.popularity)
+                                                                setproductNewSale(item.sale)
+                                                                setproductNewColors(item.colors)
+                                                            }}>ویرایش</button>
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            }
 
-        <div className="products-table">
-            {
-                isInProgress ? (
-                    <div className='loader-container'>
-                        <span class="loader"></span>
-                    </div>
-                ) : (
-                    <>
-                        {
-                            allProducts.length ? (
-                                <table className="table">
-                                    <thead className="thead-dark">
-                                        <tr>
-                                            <th scope='col'>عکس</th>
-                                            <th scope='col'>اسم</th>
-                                            <th scope='col'>قیمت</th>
-                                            <th scope='col'>موجودی</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            allProducts.map((item) => (
-                                                <tr key={item.id}>
-                                                    <td scope="row">
-                                                        <img src={item.img} alt="" className='product-table-img' />
-                                                    </td>
-                                                    <td>{item.title}</td>
-                                                    <td>{item.price}</td>
-                                                    <td>{item.count}</td>
-                                                    <td>
-                                                        <button className="product-table-btn" onClick={() => {
-                                                            setIsShowDetailsModal(true)
-                                                            setMainProductInfo(item)
-                                                        }}>جزییات</button>
-                                                        <button className="product-table-btn" onClick={() => {
-                                                            setIsShowDeleteModal(true)
-                                                            setproductID(item.id)
-                                                        }}>حذف</button>
-                                                        <button className="product-table-btn" onClick={() => {
-                                                            setIsShowEditModal(true)
-                                                            setproductID(item.id)
-                                                            setproductNewTitle(item.title)
-                                                            setproductNewPrice(item.price)
-                                                            setproductNewCount(item.count)
-                                                            setproductNewImg(item.img)
-                                                            setproductNewPopularity(item.popularity)
-                                                            setproductNewSale(item.sale)
-                                                            setproductNewColors(item.colors)
-                                                        }}>ویرایش</button>
-                                                    </td>
-                                                </tr>
-                                            ))
-                                        }
 
+                                        </tbody>
+                                    </table>
+                                ) : (
+                                    <Error msg={'هیچ پیامی یافت نشد...'} />
+                                )
+                            }
 
-                                    </tbody>
-                                </table>
-                            ) : (
-                                <Error msg={'هیچ پیامی یافت نشد...'} />
-                            )
-                        }
+                            {isShowDeleteModal &&
+                                <DeleteModal
+                                    submitModal={deleteModalConfirmAction}
+                                    canselModal={deleteModalCalncelAction}
+                                />
+                            }
 
-                        {isShowDeleteModal &&
-                            <DeleteModal
-                                submitModal={deleteModalConfirmAction}
-                                canselModal={deleteModalCalncelAction}
-                            />
-                        }
-
-                        {isShowDetailsModal && (
-                            <DetailsModal closeBtn={detailsModalClose}>
-                                <table className='cms-table'>
-                                    <thead>
-                                        <tr>
-                                            <th>محبوبیت</th>
-                                            <th>فروش</th>
-                                            <th>رنگ بندی</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{mainProductInfo.popularity}</td>
-                                            <td>{mainProductInfo.sale}</td>
-                                            <td>{mainProductInfo.colors}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </DetailsModal>
-                        )}
-                        {
-                            isShowEditModal &&
-                            <EditModal
-                                onClose={editModalClose}
-                                onSubmit={updateProductInfos}
-                            >
-                                {/*Children*/}
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input type="text"
-                                        placeholder='عنوان جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewTitle}
-                                        onChange={(e) => setproductNewTitle(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='قیمت جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewPrice}
-                                        onChange={(e) => setproductNewPrice(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='موجودی جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewCount}
-                                        onChange={(e) => setproductNewCount(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='ادرس عکس را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewImg}
-                                        onChange={(e) => setproductNewImg(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='محبوبیت جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewPopularity}
-                                        onChange={(e) => setproductNewPopularity(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='فروش جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewSale}
-                                        onChange={(e) => setproductNewSale(e.target.value)}
-                                    />
-                                </div>
-                                <div className="edit--product--form_grop">
-                                    <span>
-                                        <AiOutlineDollar />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder='رنگبندی جدید را وارد کنید'
-                                        className="edit--product_input"
-                                        value={proudctNewColors}
-                                        onChange={(e) => setproductNewColors(e.target.value)}
-                                    />
-                                </div>
-                            </EditModal>
-                        }
-                    </>
-                )
-            }
-        </div>
+                            {isShowDetailsModal && (
+                                <DetailsModal closeBtn={detailsModalClose}>
+                                    <table className='cms-table'>
+                                        <thead>
+                                            <tr>
+                                                <th>محبوبیت</th>
+                                                <th>فروش</th>
+                                                <th>رنگ بندی</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{mainProductInfo.popularity}</td>
+                                                <td>{mainProductInfo.sale}</td>
+                                                <td>{mainProductInfo.colors}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </DetailsModal>
+                            )}
+                            {
+                                isShowEditModal &&
+                                <EditModal
+                                    onClose={editModalClose}
+                                    onSubmit={updateProductInfos}
+                                >
+                                    {/*Children*/}
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input type="text"
+                                            placeholder='عنوان جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewTitle}
+                                            onChange={(e) => setproductNewTitle(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='قیمت جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewPrice}
+                                            onChange={(e) => setproductNewPrice(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='موجودی جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewCount}
+                                            onChange={(e) => setproductNewCount(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='ادرس عکس را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewImg}
+                                            onChange={(e) => setproductNewImg(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='محبوبیت جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewPopularity}
+                                            onChange={(e) => setproductNewPopularity(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='فروش جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewSale}
+                                            onChange={(e) => setproductNewSale(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="edit--product--form_grop">
+                                        <span>
+                                            <AiOutlineDollar />
+                                        </span>
+                                        <input
+                                            type="text"
+                                            placeholder='رنگبندی جدید را وارد کنید'
+                                            className="edit--product_input"
+                                            value={proudctNewColors}
+                                            onChange={(e) => setproductNewColors(e.target.value)}
+                                        />
+                                    </div>
+                                </EditModal>
+                            }
+                        </>
+                    )
+                }
+            </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
     )
 }
