@@ -15,6 +15,14 @@ export default function ProductTable() {
     const [mainProductInfo, setMainProductInfo] = useState({})
     const [productID, setproductID] = useState(null)
 
+    const [proudctNewTitle, setproductNewTitle] = useState("")
+    const [proudctNewPrice, setproductNewPrice] = useState("")
+    const [proudctNewCount, setproductNewCount] = useState("")
+    const [proudctNewImg, setproductNewImg] = useState("")
+    const [proudctNewPopularity, setproductNewPopularity] = useState("")
+    const [proudctNewSale, setproductNewSale] = useState("")
+    const [proudctNewColors, setproductNewColors] = useState("")
+
     useEffect(() => {
         getAllProducts()
     }, []);
@@ -27,7 +35,7 @@ export default function ProductTable() {
             .then((prodauct) => {
                 setAllProduct(prodauct)
                 setIsInProgress(false)
-               
+
             })
     }
 
@@ -35,7 +43,7 @@ export default function ProductTable() {
     const deleteModalCalncelAction = () => {
         setIsShowDeleteModal(false)
     }
-    
+
     const deleteModalConfirmAction = () => {
         // delete product with API
         console.log(productID);
@@ -105,7 +113,16 @@ export default function ProductTable() {
                                                             setIsShowDeleteModal(true)
                                                             setproductID(item.id)
                                                         }}>حذف</button>
-                                                        <button className="product-table-btn" onClick={() => setIsShowEditModal(true)}>ویرایش</button>
+                                                        <button className="product-table-btn" onClick={() => {
+                                                            setIsShowEditModal(true)
+                                                            setproductNewTitle(item.title)
+                                                            setproductNewPrice(item.price)
+                                                            setproductNewCount(item.count)
+                                                            setproductNewImg(item.img)
+                                                            setproductNewPopularity(item.popularity)
+                                                            setproductNewSale(item.sale)
+                                                            setproductNewColors(item.colors)
+                                                        }}>ویرایش</button>
                                                     </td>
                                                 </tr>
                                             ))
@@ -157,25 +174,77 @@ export default function ProductTable() {
                                     <span>
                                         <AiOutlineDollar />
                                     </span>
-                                    <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                                    <input type="text"
+                                        placeholder='عنوان جدید را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewTitle}
+                                        />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
                                         <AiOutlineDollar />
                                     </span>
-                                    <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                                    <input
+                                        type="text"
+                                        placeholder='قیمت جدید را وارد کنید'
+                                        className="edit--product_input"
+                                        value={proudctNewPrice}
+                                        />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
                                         <AiOutlineDollar />
                                     </span>
-                                    <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                                    <input
+                                        type="text"
+                                        placeholder='موجودی جدید را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewCount}
+                                        />
                                 </div>
                                 <div className="edit--product--form_grop">
                                     <span>
                                         <AiOutlineDollar />
                                     </span>
-                                    <input type="text" placeholder='عنوان جدید را وارد کنید' className="edit--product_input" />
+                                    <input
+                                        type="text"
+                                        placeholder='ادرس عکس را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewImg}
+                                        />
+                                </div>
+                                <div className="edit--product--form_grop">
+                                    <span>
+                                        <AiOutlineDollar />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder='محبوبیت جدید را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewPopularity}
+                                        />
+                                </div>
+                                <div className="edit--product--form_grop">
+                                    <span>
+                                        <AiOutlineDollar />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder='فروش جدید را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewSale}
+                                        />
+                                </div>
+                                <div className="edit--product--form_grop">
+                                    <span>
+                                        <AiOutlineDollar />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder='رنگبندی جدید را وارد کنید'
+                                        className="edit--product_input" 
+                                        value={proudctNewColors}
+                                        />
                                 </div>
                             </EditModal>
                         }
