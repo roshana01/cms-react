@@ -5,6 +5,8 @@
   src: url(./font/Vazir.ttf);
 }
 
+
+
 :root{
     --color-white: #ffff;
     --color-white-50: #F4F6FF;
@@ -15,6 +17,7 @@
 body,
 html {
   font-family: Vazir !important;
+ 
 }
 body{
     background-color: var(--color-white-50) !important;

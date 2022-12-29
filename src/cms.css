@@ -21,7 +21,11 @@
   border-radius: 10px;
   box-shadow: 1px 1px 38px 12px #545454d8;
 }
-
+.cms-main{
+  margin-top: 3rem;
+  padding: 1.2rem;
+  border-radius: 25px;
+}
 .cms-table {
   margin-top: 1.5rem;
   width: 100%;
