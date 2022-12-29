@@ -17,13 +17,13 @@ export default function ProductTable() {
     const [mainProductInfo, setMainProductInfo] = useState({})
     const [productID, setproductID] = useState(null)
 
-    const [proudctNewTitle, setproductNewTitle] = useState("")
-    const [proudctNewPrice, setproductNewPrice] = useState("")
-    const [proudctNewCount, setproductNewCount] = useState("")
+    const [proudctNewTitle, setProductNewTitle] = useState("")
+    const [proudctNewPrice, setProductNewPrice] = useState("")
+    const [proudctNewCount, setProductNewCount] = useState("")
     const [proudctNewImg, setproductNewImg] = useState("")
-    const [proudctNewPopularity, setproductNewPopularity] = useState("")
-    const [proudctNewSale, setproductNewSale] = useState("")
-    const [proudctNewColors, setproductNewColors] = useState("")
+    const [proudctNewPopularity, setProductNewPopularity] = useState("")
+    const [proudctNewSale, setProductNewSale] = useState("")
+    const [proudctNewColors, setProductNewColors] = useState("")
 
     useEffect(() => {
         getAllProducts()
@@ -129,7 +129,7 @@ export default function ProductTable() {
                 {
                     isInProgress ? (
                         <div className='loader-container'>
-                            <span class="loader"></span>
+                            <span className="loader"></span>
                         </div>
                     ) : (
                         <>
@@ -166,13 +166,13 @@ export default function ProductTable() {
                                                             <button className="product-table-btn" onClick={() => {
                                                                 setIsShowEditModal(true)
                                                                 setproductID(item.id)
-                                                                setproductNewTitle(item.title)
-                                                                setproductNewPrice(item.price)
-                                                                setproductNewCount(item.count)
+                                                                setProductNewTitle(item.title)
+                                                                setProductNewPrice(item.price)
+                                                                setProductNewCount(item.count)
                                                                 setproductNewImg(item.img)
-                                                                setproductNewPopularity(item.popularity)
-                                                                setproductNewSale(item.sale)
-                                                                setproductNewColors(item.colors)
+                                                                setProductNewPopularity(item.popularity)
+                                                                setProductNewSale(item.sale)
+                                                                setProductNewColors(item.colors)
                                                             }}>ویرایش</button>
                                                         </td>
                                                     </tr>
@@ -229,7 +229,7 @@ export default function ProductTable() {
                                             placeholder='عنوان جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewTitle}
-                                            onChange={(e) => setproductNewTitle(e.target.value)}
+                                            onChange={(e) => setProductNewTitle(e.target.value)}
                                         />
                                     </div>
                                     <div className="edit--product--form_grop">
@@ -241,7 +241,7 @@ export default function ProductTable() {
                                             placeholder='قیمت جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewPrice}
-                                            onChange={(e) => setproductNewPrice(e.target.value)}
+                                            onChange={(e) => setProductNewPrice(e.target.value)}
                                         />
                                     </div>
                                     <div className="edit--product--form_grop">
@@ -253,7 +253,7 @@ export default function ProductTable() {
                                             placeholder='موجودی جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewCount}
-                                            onChange={(e) => setproductNewCount(e.target.value)}
+                                            onChange={(e) => setProductNewCount(e.target.value)}
                                         />
                                     </div>
                                     <div className="edit--product--form_grop">
@@ -277,7 +277,7 @@ export default function ProductTable() {
                                             placeholder='محبوبیت جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewPopularity}
-                                            onChange={(e) => setproductNewPopularity(e.target.value)}
+                                            onChange={(e) => setProductNewPopularity(e.target.value)}
                                         />
                                     </div>
                                     <div className="edit--product--form_grop">
@@ -289,7 +289,7 @@ export default function ProductTable() {
                                             placeholder='فروش جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewSale}
-                                            onChange={(e) => setproductNewSale(e.target.value)}
+                                            onChange={(e) => setProductNewSale(e.target.value)}
                                         />
                                     </div>
                                     <div className="edit--product--form_grop">
@@ -301,7 +301,7 @@ export default function ProductTable() {
                                             placeholder='رنگبندی جدید را وارد کنید'
                                             className="edit--product_input"
                                             value={proudctNewColors}
-                                            onChange={(e) => setproductNewColors(e.target.value)}
+                                            onChange={(e) => setProductNewColors(e.target.value)}
                                         />
                                     </div>
                                 </EditModal>
