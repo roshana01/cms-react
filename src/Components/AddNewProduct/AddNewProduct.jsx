@@ -10,7 +10,7 @@ import { IoImageOutline } from 'react-icons/io5'
 
 
 
-export default function () {
+export default function ({ getAllProducts, errorNotify,successNotify  }) {
 
     const [newProudctTitle, setNewProductTitle] = useState("")
     const [newProudctPrice, setNewProductPrice] = useState("")
@@ -40,11 +40,23 @@ export default function () {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(newProduct)
-        }).then((res) => console.log(res))
-
+        }).then(res => {
+            getAllProducts()
+            emptyInput()
+            successNotify("ثبت محصول موفقیت امیز بود")
+        }).catch(err =>{
+            errorNotify("ثبت محصول موفقیت امیز نبود")
+        })
     }
 
-
+    const emptyInput = () => {
+        setNewProductTitle("")
+        setNewProductPrice("")
+        setNewProductCount("")
+        setNewProductImg("")
+        setNewProductPopularity("")
+        setNewProductSale("")
+    }
 
     return (
         <div className="product-main">

@@ -4,16 +4,13 @@ import DeleteModal from '../DeleteModal/DeleteModal'
 import DetailsModal from '../Detailes/DetailsModal'
 import EditModal from '../EditModal/EditModal'
 import Error from '../Error/Error'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import './ProductTable.css'
 
-export default function ProductTable() {
+export default function ProductTable({ allProducts, isInProgress, getAllProducts, errorNotify,successNotify }) {
     const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
     const [isShowDetailsModal, setIsShowDetailsModal] = useState(false)
     const [isShowEditModal, setIsShowEditModal] = useState(false)
-    const [allProducts, setAllProduct] = useState([])
-    const [isInProgress, setIsInProgress] = useState(true)
     const [mainProductInfo, setMainProductInfo] = useState({})
     const [productID, setproductID] = useState(null)
 
@@ -25,21 +22,7 @@ export default function ProductTable() {
     const [proudctNewSale, setProductNewSale] = useState("")
     const [proudctNewColors, setProductNewColors] = useState("")
 
-    useEffect(() => {
-        getAllProducts()
-    }, []);
 
-    const getAllProducts = () => {
-
-        setIsInProgress(true)
-        fetch('http://localhost:8000/api/products/')
-            .then((res) => res.json())
-            .then((prodauct) => {
-                setAllProduct(prodauct)
-                setIsInProgress(false)
-
-            })
-    }
 
     //* Delete Modal Actions
     const deleteModalCalncelAction = () => {
@@ -100,29 +83,6 @@ export default function ProductTable() {
         e.preventDefault()
         setIsShowEditModal(false)
     }
-
-    //* notify toast
-    const successNotify = (toastMessage) => toast.success(toastMessage, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });;
-    const errorNotify = (toastMessage) => toast.error(toastMessage, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });;
-
     return (
         <>
             <div className="products-table">
@@ -310,18 +270,7 @@ export default function ProductTable() {
                     )
                 }
             </div>
-            <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                rtl
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
+      
         </>
     )
 }

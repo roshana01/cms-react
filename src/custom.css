@@ -14,7 +14,7 @@
 *,
 body,
 html {
-  font-family: Vazir;
+  font-family: Vazir !important;
 }
 body{
     background-color: var(--color-white-50) !important;
