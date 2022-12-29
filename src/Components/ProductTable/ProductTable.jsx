@@ -4,10 +4,11 @@ import DeleteModal from '../DeleteModal/DeleteModal'
 import DetailsModal from '../Detailes/DetailsModal'
 import EditModal from '../EditModal/EditModal'
 import Error from '../Error/Error'
+import Loader from '../Loader/Loader'
 
 import './ProductTable.css'
 
-export default function ProductTable({ allProducts, isInProgress, getAllProducts, errorNotify,successNotify }) {
+export default function ProductTable({ allProducts, isInProgress, getAllProducts, errorNotify, successNotify }) {
     const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
     const [isShowDetailsModal, setIsShowDetailsModal] = useState(false)
     const [isShowEditModal, setIsShowEditModal] = useState(false)
@@ -88,9 +89,7 @@ export default function ProductTable({ allProducts, isInProgress, getAllProducts
             <div className="products-table">
                 {
                     isInProgress ? (
-                        <div className='loader-container'>
-                            <span className="loader"></span>
-                        </div>
+                        <Loader />
                     ) : (
                         <>
                             {
@@ -270,7 +269,7 @@ export default function ProductTable({ allProducts, isInProgress, getAllProducts
                     )
                 }
             </div>
-      
+
         </>
     )
 }

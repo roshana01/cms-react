@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import DeleteModal from '../../Components/DeleteModal/DeleteModal'
 import Error from '../../Components/Error/Error'
+import Loader from '../../Components/Loader/Loader'
 import './Comments.css'
 export default function Comments() {
 
   const [allComments, setAllComments] = useState([])
+  const [isInProgress, setIsInProgress] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:8000/api/comments/")
       .then(res => res.json())
-      .then(commnt => setAllComments(commnt))
+      .then(commnt => {
+        setAllComments(commnt)
+        setIsInProgress(false)
+      })
   }, []);
 
 
   return (
     <>
-
-
       <div className="comments-table">
+        {
+          isInProgress && <Loader />
+        }
         {
           allComments.length ? (
             <table className="table">
