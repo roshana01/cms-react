@@ -5,6 +5,7 @@
   background-color: var(--color-white);
   border-radius: 10px;
   text-align: center;
+  position: relative;
 }
 
 .products-table td {
@@ -18,22 +19,20 @@
   border-radius: 20px;
 }
 
-.product-table-btn{
-    border: none;
-    border-radius: 20px;
-    background-color: var(--color-purple);
-    color: var(--color-white);
-    font-size: .8rem;
-    padding:.7rem 1.2rem ;
-    margin-left: 1rem;
-    text-align: center;
+.product-table-btn {
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-purple);
+  color: var(--color-white);
+  font-size: 0.8rem;
+  padding: 0.7rem 1.2rem;
+  margin-left: 1rem;
+  text-align: center;
 }
-
-
 
 /* styles childeran editModal */
 
-.edit--product--form_grop{
+.edit--product--form_grop {
   width: 100%;
   margin-top: 1rem;
   padding: 8px 20px;
@@ -43,11 +42,10 @@
   background-color: var(--color-white-50);
   border-radius: 30px;
 }
-.edit--product_input{
+.edit--product_input {
   width: 100%;
   border: none;
   outline: none;
   background-color: unset;
-  font-size: .9rem;
-
+  font-size: 0.9rem;
 }
