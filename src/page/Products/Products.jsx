@@ -37,7 +37,7 @@ export default function Products() {
     draggable: true,
     progress: undefined,
     theme: "light",
-  });;
+  });
   const errorNotify = (toastMessage) => toast.error(toastMessage, {
     position: "bottom-right",
     autoClose: 5000,
@@ -47,7 +47,7 @@ export default function Products() {
     draggable: true,
     progress: undefined,
     theme: "light",
-  });;
+  });
   return (
     <>
       <AddNewProduct

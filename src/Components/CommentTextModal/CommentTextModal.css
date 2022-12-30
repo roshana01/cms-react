@@ -1,0 +1,33 @@
+.text-modal {
+  width: 500px;
+  text-align: center;
+  line-height: 1.5;
+  position: relative;
+  padding: 1.6rem;
+  background-color: var(--color-white);
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 23px;
+}
+
+.text-modal-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.text-btn {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 15px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+.text-btn.text-close {
+  color: #fff;
+  background-color: var(--color-purple);
+  border-radius: 30px;
+}
