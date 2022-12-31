@@ -21,6 +21,7 @@ export default function Comments() {
   const [isShowEditModal, setIsShowEditModal] = useState(false)
   const [commentNewText, setCommentNewText] = useState('')
   const [acceptCommentModal, setAcceptCommentModal] = useState(false)
+  const [rejectCommentModal, setRejectCommentModal] = useState(false)
 
   useEffect(() => {
     getData()
@@ -95,10 +96,28 @@ export default function Comments() {
       successNotify("  متن کامنت با موفقیت تایید شد")
       setAcceptCommentModal(false)
     }).catch(err => {
-      errorNotify("متن کامنت موفقیت امیز نبود ")
+      errorNotify("تایید متن کامنت موفقیت امیز نبود ")
     })
   }
   const acceptModalCalncelAction = () => setAcceptCommentModal(false)
+
+  //reject Modal 
+
+
+  const rejectModalConfirmAction = () => {
+    console.log('modal accept');
+    fetch(`http://localhost:8000/api/comments/reject/${commentID}`, {
+      method: 'POST'
+    }).then(res => {
+      console.log(res);
+      getData()
+      successNotify("  متن کامنت با موفقیت رد شد")
+      setRejectCommentModal(false)
+    }).catch(err => {
+      errorNotify("رد متن کامنت موفقیت امیز نبود")
+    })
+  }
+  const rejectModalCalncelAction = () => setRejectCommentModal(false)
 
 
   //* notify toast
@@ -169,11 +188,16 @@ export default function Comments() {
                         }}>ویرایش</button>
                         <button className='btn-comments'>پاسخ</button>
                         {
-                          item.isAccept === 0 && (
+                          item.isAccept === 0 ? (
                             <button className='btn-comments' onClick={() => {
                               setCommentID(item.id)
                               setAcceptCommentModal(true)
                             }}>تایید</button>
+                          ) : (
+                            <button className='btn-comments' onClick={() => {
+                              setCommentID(item.id)
+                              setRejectCommentModal(true)
+                            }}>رد</button>
                           )
                         }
 
@@ -229,6 +253,15 @@ export default function Comments() {
             title={'ایا از تایید اطمینان دارید؟'} //از کامپوننت دلیت مدال استفاده شده
             submitModal={acceptModalConfirmAction}
             canselModal={acceptModalCalncelAction} />
+        )
+      }
+      {
+        rejectCommentModal && (
+          <DeleteModal
+            title={'ایا از رد کامنت اطمینان دارید؟'} //از کامپوننت دلیت مدال استفاده شده
+            submitModal={rejectModalConfirmAction}
+            canselModal={rejectModalCalncelAction} />
+
         )
       }
 
