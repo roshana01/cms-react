@@ -19,6 +19,7 @@
 
 .delete-modal-accept-btn {
     background-color: var(--color-purple);
+    color: #fff;
 }
 .delete-modal-reject-btn {
     background-color: var(--color-white);

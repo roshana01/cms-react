@@ -20,7 +20,7 @@ export default function Comments() {
   const [commentID, setCommentID] = useState(null)
   const [isShowEditModal, setIsShowEditModal] = useState(false)
   const [commentNewText, setCommentNewText] = useState('')
-
+  const [acceptCommentModal, setAcceptCommentModal] = useState(false)
 
   useEffect(() => {
     getData()
@@ -38,9 +38,7 @@ export default function Comments() {
 
   // comment text modal actions
 
-  const cloesCommentModal = () => {
-    setIsShowCommentModal(false)
-  }
+  const cloesCommentModal = () => setIsShowCommentModal(false)
 
   // delete comment actions
   const deleteModalConfirmAction = () => {
@@ -56,9 +54,7 @@ export default function Comments() {
     setIsShowDeleteModal(false)
   }
 
-  const deleteModalCalncelAction = () => {
-    setIsShowDeleteModal(false)
-  }
+  const deleteModalCalncelAction = () => setIsShowDeleteModal(false)
 
   // edit modal action
   const updateCommentText = (e) => {
@@ -84,9 +80,26 @@ export default function Comments() {
 
     setCommentNewText('')
   }
-  const editModalCalncelAction = () => {
-    setIsShowEditModal(false)
+  const editModalCalncelAction = () => setIsShowEditModal(false)
+
+
+
+  //Accept Modall 
+  const acceptModalConfirmAction = () => {
+    console.log('modal accept');
+    fetch(`http://localhost:8000/api/comments/accept/${commentID}`, {
+      method: 'POST'
+    }).then(res => {
+      console.log(res);
+      getData()
+      successNotify("  متن کامنت با موفقیت تایید شد")
+      setAcceptCommentModal(false)
+    }).catch(err => {
+      errorNotify("متن کامنت موفقیت امیز نبود ")
+    })
   }
+  const acceptModalCalncelAction = () => setAcceptCommentModal(false)
+
 
   //* notify toast
   const successNotify = (toastMessage) => toast.success(toastMessage, {
@@ -133,7 +146,7 @@ export default function Comments() {
                 {
                   allComments.map((item) => (
 
-                    <tr>
+                    <tr key={item.id}>
                       <td>{item.userID}</td>
                       <td>{item.productID}</td>
                       <td><button
@@ -155,7 +168,16 @@ export default function Comments() {
                           setIsShowEditModal(true)
                         }}>ویرایش</button>
                         <button className='btn-comments'>پاسخ</button>
-                        <button className='btn-comments'>تایید</button></td>
+                        {
+                          item.isAccept === 0 && (
+                            <button className='btn-comments' onClick={() => {
+                              setCommentID(item.id)
+                              setAcceptCommentModal(true)
+                            }}>تایید</button>
+                          )
+                        }
+
+                      </td>
                     </tr>
                   ))
                 }
@@ -179,6 +201,7 @@ export default function Comments() {
       {
         isShowDeleteModal && (
           <DeleteModal
+            title={'ایا از حذف اطمینان دارید؟'} //از کامپوننت دلیت مدال استفاده شده
             submitModal={deleteModalConfirmAction}
             canselModal={deleteModalCalncelAction} />
         )
@@ -198,6 +221,14 @@ export default function Comments() {
               />
             </div>
           </EditModal>
+        )
+      }
+      {
+        acceptCommentModal && (
+          <DeleteModal
+            title={'ایا از تایید اطمینان دارید؟'} //از کامپوننت دلیت مدال استفاده شده
+            submitModal={acceptModalConfirmAction}
+            canselModal={acceptModalCalncelAction} />
         )
       }
 

@@ -148,13 +148,16 @@ export default function ProductTable({ allProducts, isInProgress, getAllProducts
 
                             {isShowDeleteModal &&
                                 <DeleteModal
+                                    title={'ایا از حذف اطمینان دارید؟'}
                                     submitModal={deleteModalConfirmAction}
                                     canselModal={deleteModalCalncelAction}
                                 />
                             }
 
                             {isShowDetailsModal && (
-                                <DetailsModal closeBtn={detailsModalClose}>
+                                <DetailsModal 
+                                closeBtn={detailsModalClose}
+                                >
                                     <table className='cms-table'>
                                         <thead>
                                             <tr>
