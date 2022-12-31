@@ -1,0 +1,40 @@
+.users-table {
+  margin-top: 2.5rem;
+  width: 100%;
+  padding: 15px 0;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.user-title {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+.users-table table {
+  width: 100%;
+}
+
+.users-table td,
+th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 25px !important;
+}
+
+.comments-table tr {
+  border-bottom: 1px solid #d9d7d7;
+}
+
+.btn-users {
+  color: #fff;
+  background-color: var(--color-purple);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 25px;
+  margin: 0 5px;
+}

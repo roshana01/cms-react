@@ -143,7 +143,7 @@ export default function Comments() {
   })
   return (
     <>
-
+     <h1 className='user-title'>لیست کامنت ها</h1>
       <div className="comments-table">
         {
           isInProgress && <Loader />
